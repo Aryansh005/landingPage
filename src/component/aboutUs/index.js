@@ -37,7 +37,7 @@ duration:500
             <img src={Whatsapp} width="80px" alt="whatsapp" />
           </div>
           <div>
-            <p className="text-3xl font-bold">WHATSAPP SUPPORT</p>
+            <p className="text-3xl font-bold" data-aos="zoom-in">WHATSAPP SUPPORT</p>
             <p>we are just a text away!</p>
           </div>
         </div>
@@ -46,7 +46,7 @@ duration:500
             <img src={NoWeightLimit} width="90px" alt="whatsapp" />
           </div>
           <div>
-            <p className="text-3xl font-bold">NO WEIGHT LIMIT </p>
+            <p className="text-3xl font-bold" data-aos="zoom-in">NO WEIGHT LIMIT </p>
           </div>
         </div>
         <div className="flex justify-center">
