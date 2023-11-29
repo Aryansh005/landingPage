@@ -1,46 +1,117 @@
-import React, { useState } from 'react';
-import Logo from "../../assest/azoozLogo.webp"
+import React, { useEffect, useState, useRef } from "react";
+import Logo from "../../assest/azoozLogo.webp";
+import "./style.css";
+import { FaTwitter } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { ImLinkedin } from "react-icons/im";
 
-function Navbar() {
+export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const crossRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+  const handleLinkClick = () => {
+    handleClose();
+  };
+
+  const handleOutsideClick = (e) => {
+    if (
+      menuRef.current &&
+      crossRef.current &&
+      !menuRef.current.contains(e.target) &&
+      !crossRef.current.contains(e.target)
+    ) {
+      handleClose();
+    }
+  };
+  const handleScroll = () => {
+    const scrollThreshold = 700;
+    if (window.scrollY > scrollThreshold) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
-    <header className="bg-transparent sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
-      <div className="flex items-center justify-between px-4 py-3 sm:p-0">
-        <div>
-          <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={Logo} width="80%" alt="Flowbite Logo" />
-          </a>
-        </div>
-        <div className="sm:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            type="button"
-            className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
-          >
-            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path
-                  fillRule="evenodd"
-                  d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                />
-              ) : (
-                <path
-                  fillRule="evenodd"
-                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-      <nav className={isOpen ? 'px-2 pt-2 pb-4 sm:flex sm:p-0 block' : 'hidden'} >
-        <a href="#" className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">List your property</a>
-        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">Trips</a>
-        <a href="#" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2">Messages</a>
-      </nav>
-    </header>
-  );
-}
+    <>
+      <header className="">
+        <nav className={`${scrolled ? "scrolled" : ""}`}>
+          <ul className="nav-bar text-white">
+            <li className="logo">
+              <div>
+                <img className="w-[200px]" src={Logo} alt="logo" />
+              </div>
+            </li>
+            <input
+              type="checkbox"
+              id="check"
+              checked={isOpen}
+              onChange={() => setIsOpen((prev) => !prev)}
+              ref={crossRef}
+            />
+            <span
+              className={`menu font-bold max-[768px]:text-white ${
+                isOpen ? "open" : ""
+              }`}
+              ref={menuRef}
+            >
+              <li className="cursor-pointer">
+                <p className="nav-link">Home</p>
+              </li>
 
-export default Navbar;
+              <li className="cursor-pointer">
+                <p>About</p>
+              </li>
+              <li className="cursor-pointer">
+                <p>Contact</p>
+              </li>
+              <li className="cursor-pointer">
+                <p>Service</p>
+              </li>
+              <label htmlFor="check" className="close-menu">
+                <i className="fas fa-times"></i>
+              </label>
+            </span>
+            <label htmlFor="check" className="open-menu">
+              <i className="fas fa-bars"></i>
+            </label>
+            <div className="text-white sm:hidden md:block">
+              <div className="flex justify-around gap-6">
+                <p className="mt-2">
+                  <FaFacebook size="25px" />
+                </p>
+                <p className="mt-2">
+                  <FaTwitter size="25px" />
+                </p>
+                <p className="mt-2">
+                  <FaInstagram size="25px" />
+                </p>
+                <p className="mt-2">
+                  <ImLinkedin size="25px" />
+                </p>
+                <button className="font-bold bg-red-600 hover:bg-black text-white py-3 px-8 rounded-tl-md rounded-bl-2xl rounded-r-2xl ">
+                  GET A QUOTE
+                </button>
+              </div>
+            </div>
+          </ul>
+        </nav>
+      </header>
+    </>
+  );
+};

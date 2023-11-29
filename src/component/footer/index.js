@@ -14,9 +14,11 @@ function Footer() {
   return (
     <>
       <div className="bg-black text-white p-8 ">
-        <div className=" flex justify-around ">
+        <div className="md:flex sm:flex-col md:flex-row md:justify-around ">
+          <div className="sm:flex sm:justify-center sm:flex-col">
           <div>
             <img src={AzoozLogo} alt="logo" />
+            </div>
             <div className="flex justify-around mt-10">
             <p className=""><FaTwitter size="25px" /></p>
             <p><FaFacebook size="25px" /></p>
@@ -25,25 +27,27 @@ function Footer() {
             </div>
           </div>
           <div>
-            <ul>
+            <ul className="sm:text-center sm:my-4">
               <li className="mb-4 font-bold">Company</li>
               <li className="mb-2">Home</li>
               <li className="mb-2">About</li>
               <li>Contact</li>
             </ul>
           </div>
+          <div className="flex justify-center">
           <div>
-            <ul>
+            <ul className="sm:text-center">
               <li className="mb-4 font-bold">Reach Out To us</li>
-              <li className="mb-2 flex items-center gap-4">
+              <li className="mb-2 flex items-center gap-4 text-center">
                 <FaMapPin /> PO BOX 84, Postal code 101, Sultanate of Oman.
               </li>
-              <li className="mb-2 flex items-center gap-4"><IoIosMailOpen/> info@azoozexpress.com</li>
-              <li className="mb-2 flex items-center gap-4"><MdOutlineWifiCalling3/> +968 22700 070</li>
+              <li className="mb-2 flex items-center gap-4 text-center"><IoIosMailOpen/> info@azoozexpress.com</li>
+              <li className="mb-2 flex items-center gap-4 text-center"><MdOutlineWifiCalling3/> +968 22700 070</li>
               <li className="flex items-center gap-4"><IoLogoWhatsapp/> +968 9658 6404</li>
             </ul>
+            </div>
           </div>
-          <div>
+          <div className="">
             <button className="font-bold bg-red-600 hover:bg-black text-white py-3 px-6 rounded-tl-md rounded-bl-2xl rounded-r-2xl ">
               GET A QUOTE
             </button>
