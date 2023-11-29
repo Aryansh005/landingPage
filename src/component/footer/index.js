@@ -13,7 +13,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 function Footer() {
   return (
     <>
-      <div className="bg-black text-white p-8">
+      <div className="bg-black text-white p-8 ">
         <div className=" flex justify-around ">
           <div>
             <img src={AzoozLogo} alt="logo" />
