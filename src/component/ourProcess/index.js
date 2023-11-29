@@ -1,15 +1,23 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import "./styles.css"
 import Process from "../../assest/stepper.webp";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 function OurProcess() {
+  useEffect(() => {
+    Aos.init({
+      delay:1000,
+duration:500
+    });
+  }, []);
   return (
     <>
       <div className="mt-10">
-        <p className=" font-bold sm:hidden md:block text-3xl tracking-wider text-blue-900 text-center">
+        <p data-aos="zoom-in" className=" font-bold sm:hidden md:block text-3xl tracking-wider text-blue-900 text-center">
           OUR PROCESS
         </p>
-        <p className="font-bold text-4xl sm:hidden md:block text-red-600 tracking-wider text-center">
+        <p data-aos="zoom-in" className="font-bold text-4xl sm:hidden md:block text-red-600 tracking-wider text-center">
           WHAT WE CAN DO
         </p>
         <div className="w-[50%] mt-6 mx-auto sm:hidden md:block">

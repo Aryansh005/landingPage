@@ -55,10 +55,12 @@ duration:500
             </ul>
             </div>
           </div>
-          <div className="">
+          <div className="sm:flex sm:justify-center sm:mt-4 md:mt-0 md:justify-start">
+          <div>
             <button className="font-bold bg-red-600 hover:bg-black text-white py-3 px-6 rounded-tl-md rounded-bl-2xl rounded-r-2xl ">
               GET A QUOTE
             </button>
+            </div>
           </div>
         </div>
           <div className="flex justify-evenly font-semibold mt-20">

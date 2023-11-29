@@ -1,7 +1,15 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import Bus from "../../assest/azoozCar.webp"
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 function ContactUs() {
+  useEffect(() => {
+    Aos.init({
+      delay:1000,
+duration:500
+    });
+  }, []);
   return (
     <>
      <div className=' sm:p-4 md:w-[75%] mx-auto'>
@@ -11,8 +19,8 @@ function ContactUs() {
      </div>
      <div className='flex justify-between sm:mt-6'>
      <div className='md:w-1/2 md:flex md:justify-center md:flex-col'>
-        <p className=' font-bold sm:text-xl sm:text-center md:text-3xl'>READY TO GET MOVING?<span>GET YOUR FREE QUOTE</span></p>
-        <p className=' font-bold sm:text-xl md:text-3xl sm:hidden'>GET YOUR FREE QUOTE</p>
+        <p data-aos="zoom-in" className=' font-bold sm:text-xl sm:text-center md:text-3xl'>READY TO GET MOVING?<span>GET YOUR FREE QUOTE</span></p>
+        <p data-aos="zoom-in" className=' font-bold sm:text-xl md:text-3xl sm:hidden'>GET YOUR FREE QUOTE</p>
         <div>
         <div className='sm:flex sm:justify-center'>
             <button className="font-bold bg-red-600 hover:bg-black text-white py-3 px-6 sm:mt-6 md:mt-12 rounded-tl-md rounded-bl-2xl rounded-r-2xl ">
