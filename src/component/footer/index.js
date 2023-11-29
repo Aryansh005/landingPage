@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import AzoozLogo from "../../assest/azoozLogo.webp";
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
@@ -8,15 +8,23 @@ import { FaMapPin } from "react-icons/fa";
 import { IoIosMailOpen } from "react-icons/io";
 import { MdOutlineWifiCalling3 } from "react-icons/md";
 import { IoLogoWhatsapp } from "react-icons/io";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 
 function Footer() {
+  useEffect(() => {
+    Aos.init({
+      delay:1000,
+duration:500
+    });
+  }, []);
   return (
     <>
       <div className="bg-black text-white p-8 ">
         <div className="md:flex sm:flex-col md:flex-row md:justify-around ">
           <div className="sm:flex sm:justify-center sm:flex-col">
-          <div>
+          <div data-aos="zoom-in">
             <img src={AzoozLogo} alt="logo" />
             </div>
             <div className="flex justify-around mt-10">
@@ -28,7 +36,7 @@ function Footer() {
           </div>
           <div>
             <ul className="sm:text-center sm:my-4">
-              <li className="mb-4 font-bold">Company</li>
+              <li className="mb-4 font-bold" data-aos="zoom-in">Company</li>
               <li className="mb-2">Home</li>
               <li className="mb-2">About</li>
               <li>Contact</li>
@@ -36,7 +44,7 @@ function Footer() {
           </div>
           <div className="flex justify-center">
           <div>
-            <ul className="sm:text-center">
+            <ul className="sm:text-center" data-aos="zoom-in">
               <li className="mb-4 font-bold">Reach Out To us</li>
               <li className="mb-2 flex items-center gap-4 text-center">
                 <FaMapPin /> PO BOX 84, Postal code 101, Sultanate of Oman.

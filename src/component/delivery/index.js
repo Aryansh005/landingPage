@@ -1,14 +1,22 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import Aeroplane from "../../assest/aeroPlane.webp";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 function Delivery() {
+  useEffect(() => {
+    Aos.init({
+      delay:1000,
+duration:500
+    });
+  }, []);
   return (
     <div className="bg-yellow-400">
       <div className="sm:p-4 md:w-[80%] mx-auto flex justify-between">
         <div className="flex flex-col justify-center items-center">
-          <p className="text-red-600 sm:text-xl md:text-3xl font-bold tracking-wide">
+          <p data-aos="fade-up" className="text-red-600 sm:text-xl md:text-3xl font-bold tracking-wide">
             WE VALUE YOUR PACKAGES AS MUCH AS YOU DO
           </p>
-          <p className="text-black">
+          <p className="text-black" data-aos="fade-right" >
             Packages are sensitive and moving them is tiring, so we take care of
             them for you.
           </p>
